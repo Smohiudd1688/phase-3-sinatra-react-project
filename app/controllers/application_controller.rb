@@ -16,4 +16,16 @@ class ApplicationController < Sinatra::Base
     show.to_json
   end
 
+  delete '/shows/:id' do
+    show = Show.find(params[:id])
+    show.destroy
+    show.to_json
+  end 
+
+  get "/shows/:id/reviews" do
+    show = Show.find(params[:id])
+    reviews = show.reviews 
+    reviews.to_json
+  end
+
 end
