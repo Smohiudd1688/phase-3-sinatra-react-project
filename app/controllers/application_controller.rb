@@ -7,4 +7,13 @@ class ApplicationController < Sinatra::Base
     shows.to_json
   end
 
+  post '/shows' do
+    show = Show.create(
+      title: params[:title],
+      image: params[:image],
+      num_of_seasons: params[:num_of_seasons]
+    )
+    show.to_json
+  end
+
 end
