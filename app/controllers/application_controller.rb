@@ -30,11 +30,18 @@ class ApplicationController < Sinatra::Base
 
   post "/shows/:id/reviews" do
     review = Review.create(
-      rating: params[:rating]
-      review: params[:review]
-      name: params[:name]
+      rating: params[:rating],
+      review: params[:review],
+      name: params[:name],
+      show_id: params[:id]
     )
     review.to_json
   end
+
+  delete '/shows/:id/reviews/:id2' do
+    review = Review.find(params[:id2])
+    review.destroy
+    review.to_json
+  end 
 
 end
